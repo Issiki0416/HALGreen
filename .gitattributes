@@ -8,3 +8,7 @@
 
 /.github export-ignore
 CHANGELOG.md export-ignore
+*.pdf export-ignore
+DS_Store export-ignore
+.gitingore export-ignore
+.gitattributes export-ignore
