@@ -8,4 +8,19 @@ DB作ったら、.envファイルをいじる
 ## debugbarインストール
 ```  composer require barryvdh/laravel-debugbar ```
 
+## breezeをいれる
+``` composer require laravel/breeze “1.*” --dev ```
+``` php artisan breeze:install ```
+``` npm install && npm run dev ```
+
+以下をviewsのlayoutsに記述する
+```html
+   <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+```
+
+当たり前だがAuthは認証に関するファイル(app/Http/Controllers/Auth)
 
