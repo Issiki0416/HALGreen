@@ -1,0 +1,22 @@
+# ワークフロー名
+name : Sample Action
+# トリガー
+on : push
+pull_request:
+  branches: ["main"]
+
+### ここまでがワークフローについての定義
+
+### 以下がワークフローの中身を定義
+# ジョブ
+jobs:
+  # 適当なジョブ名
+  build:
+    # 実行環境
+    runs-on: ubuntu-latest
+    # アクション
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Success!
+
