@@ -37,3 +37,6 @@ resources/views/layouts/guest.blade.php
 
 ## コントローラーのファイル群
 <img width="1107" alt="image" src="https://user-images.githubusercontent.com/96870513/200376601-b690bb14-baa3-499b-9d90-1b766e2372b5.png">
+
+## 日本語の設定
+https://readouble.com/laravel/8.x/ja/validation-php.html
