@@ -11,7 +11,10 @@
 |
 */
 
-// ここにサービスコンテナが入っている
+// サービスコンテナ本体
+// こいつを$appという変数に入れて使えるようにしている
+// つまり$appはサービスコンテナ
+// new Illuminate\Foundation\Applicationをクリックして飛ぶと中身を見れる
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
@@ -26,7 +29,9 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
-
+//　以下でサービスコンテナにサービスを登録していく
+// singleton：一度だけインスタンス化する
+// singletonでサービスコンテンナに登録
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     App\Http\Kernel::class
