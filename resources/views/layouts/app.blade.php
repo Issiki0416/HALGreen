@@ -16,6 +16,12 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        {{-- toastを3秒後に消す --}}
+        <script>
+            setTimeout(function(){
+                document.getElementById('flash_message').style.display = 'none';
+            }, 3000);
+        </script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

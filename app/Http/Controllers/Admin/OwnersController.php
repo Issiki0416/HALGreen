@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Owner; //Eloquentモデルを使うために追加
 use Illuminate\Support\Facades\DB; //DBクラスを使うために追加
 use Carbon\Carbon; //日付を扱うために追加
+use Illuminate\Support\Facades\Hash;
 
 class OwnersController extends Controller
 {
@@ -63,7 +64,24 @@ class OwnersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // フォーム人入力された値がリクエストクラスになってそのまま$requestに入ってくる
+        // $request->nameでオーナー名が入ってくる
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:owners'],
+            'password' => ['required', 'confirmed', 'min:8'],
+        ]);
+
+        Owner::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // 登録後リダイレクト
+        return redirect()
+        ->route('admin.owners.index')
+        ->with('message', 'オーナーを登録しました。');
     }
 
     /**
