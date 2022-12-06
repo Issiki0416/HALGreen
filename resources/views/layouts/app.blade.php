@@ -22,6 +22,7 @@
                 document.getElementById('flash_message').style.display = 'none';
             }, 3000);
         </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

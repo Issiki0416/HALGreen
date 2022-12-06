@@ -30,6 +30,14 @@ Route::get('/', function () {
 Route::resource('owners', OwnersController::class)
 ->middleware('auth:admin');
 
+// 期限切れオーナー取得
+Route::prefix('expired-owners')-> middleware('auth:admin')->group(function(){
+    Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])->name('expired-owners.index');
+    Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])->name('expired-owners.destroy');
+});
+
+
+
 // ログインしていたらダッシュボードを表示する
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
