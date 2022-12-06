@@ -155,7 +155,7 @@ class OwnersController extends Controller
     }
 
     public function expiredOwnerIndex(){
-        $expiredOwners = Owner::onlyTrashed()->get();////ソフトデリートされたオーナーを取得
+        $expiredOwners = Owner::onlyTrashed()->paginate(3);////ソフトデリートされたオーナーを取得
         return view('admin.expired-owners',compact('expiredOwners'));
     }
 
