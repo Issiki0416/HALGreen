@@ -10,6 +10,15 @@ class Shop extends Model
 {
     use HasFactory;
 
+    // モデルがその属性以外を持たないように設定する
+    protected $fillable = [
+        'owner_id',
+        'name',
+        'information',
+        'filename',
+        'is_selling',
+    ];
+
     // Ownerテーブルとのリレーションを定義
     public function owner()
     {
