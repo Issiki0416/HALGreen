@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
-
+use Illuminate\Support\Facades\Storage;
+use InterventionImage;
+use App\Http\Requests\UploadImageRequest;
 
 class ShopController extends Controller
 {
@@ -35,6 +37,7 @@ class ShopController extends Controller
 
     public function index()
     {
+        // phpinfo();
         // ログインしているオーナーのidを取得
         $ownerId = Auth::id();
         // owner_idで検索してヒットしたらgetで取得
@@ -45,14 +48,28 @@ class ShopController extends Controller
 
     public function edit($id)
     {
-        dd(Shop::findOrFail($id));
+        $shop = Shop::findOrFail($id);
+        // dd(Shop::findOrFail($id));
+        return view('owner.shops.edit', compact('shop'));
 
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UploadImageRequest $request, $id)
     {
+        // $request->image;で画像ファイルを取得
+        $imageFile = $request->image; //一時保存
+        if(!is_null($imageFile) && $imageFile->isValid() ){ // 画像があるかどうかと、画像が正常にアップロードされているかどうか
+            //putFile()で自動でファイル名を生成してくれる
+            // Storage::putFile('public/shops', $imageFile);//サーバーに保存 リサイズなし
 
+            $fileName = uniqid(rand().'_');//ファイル名を作成
+            $extension = $imageFile->extension();//拡張子を取得
+            $fileNameToStore = $fileName. '.' . $extension;
+            $resizedImage = InterventionImage::make($imageFile)->resize(1920, 1080)->encode();//画像をmakeに入れて使えるようにする
+            Storage::put('public/shops/' . $fileNameToStore, $resizedImage );
+        }
 
+        return redirect()->route('owner.shops.index');
     }
 }
