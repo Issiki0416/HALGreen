@@ -11,6 +11,7 @@ use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\ShopController;
+use App\Http\Controllers\Owner\ImageController;
 
 
 /*
@@ -33,6 +34,10 @@ Route::prefix('shops')-> middleware('auth:owners')->group(function(){
     Route::get('edit/{shop}', [ShopController::class, 'edit'])->name('shops.edit');
     Route::post('update/{shop}', [ShopController::class, 'update'])->name('shops.update');
 });
+
+Route::resource('images', ImageController::class)
+->middleware('auth:owners')->except(['show']);
+
 
 
 // ログインしていたらダッシュボードを表示する
