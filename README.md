@@ -1,3 +1,8 @@
+## HAL Green
+
+## 概要
+マルチログインに対応したECサイトです。
+
 ## 機能
 
 
@@ -39,7 +44,10 @@
 - 利用側
     - 商品購入
     
-
-
 ## Laravelフロー
 <img width="881" alt="image" src="https://user-images.githubusercontent.com/96870513/203036307-8b5e7a82-38b0-4cf2-99f4-20bf2a16966a.png">
+
+## インストール後の設定
+画像のダミーデータはpublic/imagesフォルダ内にsample1.jpgからsample6.jpgまで用意しています。    
+``` php artisan storage:link ```でstorageフォルダにリンクを作成後、    
+public/app/public/productsフォルダ内に保存すると表示されます。(productsフォルダがない場合は作成してください。)

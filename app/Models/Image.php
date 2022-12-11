@@ -11,7 +11,7 @@ class Image extends Model
     use HasFactory;
 
 
-    // モデルがその属性以外を持たないように設定する
+    // モデルがその属性以外を持たないように設定する→必須の項目だけ
     protected $fillable = [
         'owner_id',
         'filename',
