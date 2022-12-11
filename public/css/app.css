@@ -712,6 +712,10 @@ select {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -768,6 +772,15 @@ select {
 }
 .mb-12 {
   margin-bottom: 3rem;
+}
+.mt-32 {
+  margin-top: 8rem;
+}
+.mt-20 {
+  margin-top: 5rem;
+}
+.mt-16 {
+  margin-top: 4rem;
 }
 .block {
   display: block;

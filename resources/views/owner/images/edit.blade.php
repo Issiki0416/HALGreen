@@ -34,8 +34,41 @@
                             </div>
                         </div>
                     </form>
+                    <form id="delete_{{$image->id}}" action="{{ route('owner.images.destroy', ['image'=> $image->id])}}" method="post">
+                        @csrf
+                        @method('DELETE')
+
+                        <div class="px-4 py-3">
+                            {{-- オーナー情報編集ボタン --}}
+                            <div class="p-2 w-full flex justify-around">
+                                <a href="#" data-id="{{ $image->id }}" onclick="deletePost(this)" type="submit" class=" text-white bg-red-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded">削除する</a>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function deletePost(e){
+            swal({
+                title: "本当に削除しますか?",
+                text: "一旦削除すると復元まで時間を要します",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    document.getElementById('delete_' + e.dataset.id).submit();
+                    swal("削除が完了しました", {
+                    icon: "success",
+                    });
+                } else {
+                    swal("削除をキャンセルしました");
+                }
+            });
+        }
+    </script>
 </x-app-layout>
