@@ -62,9 +62,5 @@ class CategorySeeder extends Seeder
                 'primary_category_id' => 2,
             ],
         ]);
-
-
-
-
     }
 }
