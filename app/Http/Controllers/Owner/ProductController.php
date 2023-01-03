@@ -13,6 +13,8 @@ use App\Models\PrimaryCategory;
 use App\Models\Owner;
 use App\Models\Stock;
 
+use App\Http\Requests\ProductRequest;
+
 
 
 class ProductController extends Controller
@@ -94,24 +96,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         // dd($request);
-        $request->validate([
-            'name' => ['required', 'string', 'max:60'],
-            'information' => ['required', 'string','max:1000'],
-            'price' => ['required', 'integer'],
-            'sort_order' => ['required', 'integer'],
-            'quantity' => ['required', 'integer'],
-            'shop_id' => ['required', 'exists:shops,id'],
-            'category' => ['required', 'exists:secondary_categories,id'],
-            'image1' => ['nullable', 'exists:images,id'],
-            'image2' => ['nullable', 'exists:images,id'],
-            'image3' => ['nullable', 'exists:images,id'],
-            'image4' => ['nullable', 'exists:images,id'],
-            'is_selling' => ['required'],
-        ]);
-
         try{
             // $requestにフォームの情報が入っているのでそれをEloquentでDBに保存する
             DB::transaction(function () use($request){
@@ -150,8 +137,6 @@ class ProductController extends Controller
             'status' => 'info'
         ]);
 
-
-
     }
 
     /**
@@ -182,16 +167,75 @@ class ProductController extends Controller
         return view('owner.products.edit', compact('product', 'quantity', 'shops', 'images', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $request->validate([
+            'current_quantity' => ['required', 'integer'],
+        ]);
+
+        $product = Product::findOrFail($id);
+        // 数量を取得
+        $quantity = Stock::where('product_id', $product->id)->sum('quantity'); // 商品の在庫数を取得
+
+        if($request->current_quantity !== $quantity){
+            // ルートパラメータを取得
+            $id = $request->route()->parameter('product'); //id取得
+            return redirect()->route('owner.products.edit', ['product' => $id])
+                ->with([
+                'message' => '在庫数が変更されています。再度確認してください。',
+                'status' => 'alert'
+            ]);
+        }else{
+            try{
+                // $requestにフォームの情報が入っているのでそれをEloquentでDBに保存する
+                // $productにidが入ってくる
+                $newQuantity = '';
+                DB::transaction(function () use($request,$product){
+                    // $request->name;
+                        $product->name = $request->name;
+                        $product->information = $request->information;
+                        $product->price = $request->price;
+                        $product->sort_order = $request->sort_order;
+                        $product->shop_id = $request->shop_id;
+                        $product->secondary_category_id = $request->category;
+                        $product->image1 = $request->image1;
+                        $product->image2 = $request->image2;
+                        $product->image3 = $request->image3;
+                        $product->image4 = $request->image4;
+                        $product->is_selling = $request->is_selling;
+                        $product->save();// createじゃないので保存処理
+
+                    if($request->type === '1'){
+                        $newQuantity = $request->quantity;
+                    }
+                    // 在庫数が減る場合マイナスをいれる
+                    if($request->type === '2'){
+                        $newQuantity = $request->quantity * -1;
+                    }
+
+                    Stock::create([
+                        'product_id' => $product->id,
+                        'type' => $request->type,
+                        'quantity' => $newQuantity,
+                    ]);
+
+                },2);
+            }catch(Throwable $e){
+                Log::error($e);
+                throw $e;
+            }
+
+            // 登録後リダイレクト
+            return redirect()
+            ->route('owner.products.index')
+            ->with([
+                'message' => '商品情報を更新しました。',
+                'status' => 'info'
+            ]);
+
+        }
+
     }
 
     /**
