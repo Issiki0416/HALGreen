@@ -206,11 +206,11 @@ class ProductController extends Controller
                         $product->is_selling = $request->is_selling;
                         $product->save();// createじゃないので保存処理
 
-                    if($request->type === '1'){
+                    if($request->type === \Constant::PRODUCT_LIST['add']){
                         $newQuantity = $request->quantity;
                     }
                     // 在庫数が減る場合マイナスをいれる
-                    if($request->type === '2'){
+                    if($request->type === \Constant::PRODUCT_LIST['reduce']){
                         $newQuantity = $request->quantity * -1;
                     }
 
