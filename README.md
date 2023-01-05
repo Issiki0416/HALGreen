@@ -55,4 +55,6 @@
 ## インストール後の設定
 画像のダミーデータはpublic/imagesフォルダ内にsample1.jpgからsample6.jpgまで用意しています。    
 ``` php artisan storage:link ```でstorageフォルダにリンクを作成後、    
-public/app/public/productsフォルダ内に保存すると表示されます。(productsフォルダがない場合は作成してください。)
+storage/app/public/productsフォルダ内に保存すると表示されます。(productsフォルダがない場合は作成してください。)
+
+ショップの画像も表示する場合、storage/app/public/productsフォルダを作成して画像を保存してください。
