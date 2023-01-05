@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
+    // コントローラの方でログインしているかどうかチェックする
+    public function __construct()
+    {
+        // middlewareのauth:ownersは、config/auth.phpに定義されている→オーナーかどうか確認する
+        $this->middleware('auth:users');
+    }
+
     public function index()
     {
         $stocks = DB::table('t_stocks')
@@ -36,5 +43,11 @@ class ItemController extends Controller
         // $products = Product::all();
 
         return view('user.index', compact('products'));
+    }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        return view('user.show', compact('product'));
     }
 }
