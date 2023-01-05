@@ -13,8 +13,12 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $products_names = ['フィカス ベンジャミン', 'サンスベリア', 'パキラ', 'オリーブの木', 'アガベ ベネズエラ', 'ソテツ'];
+        $product_name = $products_names[rand(0, count($products_names) - 1)];
+
+
         return [
-            'name' => $this->faker->name,
+            'name' => $product_name,
             'information' => $this->faker->realText,
             'price' => $this->faker->numberBetween(10, 100000), 'is_selling' => $this->faker->numberBetween(0,1),
             'sort_order' => $this->faker->randomNumber,
