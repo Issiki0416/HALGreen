@@ -26,7 +26,7 @@
                                             class="text-sm text-gray-700">円(税込み)</span></div>
                                 </div>
                                 <div class="md:w-2/12">
-                                    <form action="{{ route('user.cart.delete', ['item' => $product->id]) }}">
+                                    <form method="POST" action="{{ route('user.cart.delete', ['item' => $product->id]) }}">
                                         @csrf
                                         <button>
                                             <span class="material-symbols-outlined">delete</span>
