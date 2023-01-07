@@ -23,6 +23,7 @@
             }, 3000);
         </script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

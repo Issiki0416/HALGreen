@@ -23,9 +23,16 @@
                                 <div class="md:w-3/12 flex justify-around">
                                     <div>{{ $product->pivot->quantity }}</div>
                                     <div>{{ number_format($product->pivot->quantity * $product->price) }}<span
-                                            class="text-sm text-gray-700">円(税込み)</span>)</div>
+                                            class="text-sm text-gray-700">円(税込み)</span></div>
                                 </div>
-                                <div class="md:w-2/12">削除ボタン</div>
+                                <div class="md:w-2/12">
+                                    <form action="{{ route('user.cart.delete', ['item' => $product->id]) }}">
+                                        @csrf
+                                        <button>
+                                            <span class="material-symbols-outlined">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @endforeach
                     @else
