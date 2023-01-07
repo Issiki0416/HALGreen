@@ -16,10 +16,24 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        {{-- toastを3秒後に消す --}}
+        <script>
+            setTimeout(function(){
+                document.getElementById('flash_message').style.display = 'none';
+            }, 3000);
+        </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            @if (auth('admin')->user())
+                @include('layouts.admin-navigation')
+            @elseif (auth('owners')->user())
+                @include('layouts.owner-navigation')
+            @elseif (auth('users')->user())
+                @include('layouts.user-navigation')
+            @endif
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
