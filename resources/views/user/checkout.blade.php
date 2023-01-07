@@ -17,7 +17,9 @@
         stripe.redirectToCheckout({
             sessionId: '{{ $session->id }}'
         }).then(function(result) {
-            window.location.href = '{{ route('user.cart.index') }}';
+            // エラー時の処理
+            // cartのcancelで在庫を戻す処理を行う
+            window.location.href = '{{ route('user.cart.cancel') }}';
         });
     }
 </script>
