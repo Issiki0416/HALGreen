@@ -49,6 +49,7 @@
 - 利用側
     - 商品購入
         - 決済機能：Stripe (APIのPUBRIC_KEYとSECRET_KEYを.envに記述)
+        - 
     
 ## Laravelフロー
 <img width="881" alt="image" src="https://user-images.githubusercontent.com/96870513/203036307-8b5e7a82-38b0-4cf2-99f4-20bf2a16966a.png">
