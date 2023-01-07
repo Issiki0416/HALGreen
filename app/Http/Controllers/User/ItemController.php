@@ -16,6 +16,18 @@ class ItemController extends Controller
     {
         // middlewareのauth:ownersは、config/auth.phpに定義されている→オーナーかどうか確認する
         $this->middleware('auth:users');
+
+
+        $this->middleware(function ($request, $next){
+            $id = $request->route()->parameter('item');// web.phpのshowの{item}の値を取得
+            if(!is_null($id)){ // null判定 index用
+                $itemId = Product::availableItems()->where('products.id', $id)->exists();
+                if(!$itemId){
+                    abort(404); // abort()で404画面表示
+                }
+            }
+            return $next($request);
+        });
     }
 
     public function index()
