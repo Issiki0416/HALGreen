@@ -1,5 +1,31 @@
 ## HAL Green
 
+## インストール方法
+``` cd laravel_ec ```
+``` composer install ```
+``` npm install ```
+``` npm run dev ```
+
+.env.exampleをコピーして .envファイルを作成
+
+.envファイル内に下記をご利用の環境に合わせて変更してください。
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_ec
+DB_USERNAME=halgreen
+DB_PASSWORD=halgreen
+
+DB起動後、下記コマンドを実行してください。
+``` php artisan migrate:fresh --seed ```
+と実行。（データベーステーブルとダミーデータが追加されます）
+
+最後に
+``` php artisan key:generate ```
+と入力してキーを生成後、
+``` php artisan serve ```
+と入力して簡易サーバーを起動してください。
+
 ## 概要
 マルチログインに対応したECサイトです。
 
