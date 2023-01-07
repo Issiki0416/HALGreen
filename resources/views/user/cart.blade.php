@@ -26,7 +26,8 @@
                                             class="text-sm text-gray-700">円(税込み)</span></div>
                                 </div>
                                 <div class="md:w-2/12">
-                                    <form method="POST" action="{{ route('user.cart.delete', ['item' => $product->id]) }}">
+                                    <form method="POST"
+                                        action="{{ route('user.cart.delete', ['item' => $product->id]) }}">
                                         @csrf
                                         <button>
                                             <span class="material-symbols-outlined">delete</span>
@@ -35,6 +36,14 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="my-2">
+                            小計: {{ number_format($total_price) }}<span
+                                class="text-sm
+                            text-gray-700">円(税込)</span> </div>
+                        <div>
+                            <button onclick="location.href='{{ route('user.cart.checkout') }}'" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">購入する
+                            </button>
+                        </div>
                     @else
                         カートに商品がありません
                     @endif

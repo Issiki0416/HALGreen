@@ -63,12 +63,16 @@ class CartController extends Controller
             }else{
                 // stripeの使用に乗っ取り、一つの商品の情報
                 $lineItem = [
-                    'name' => $product->name,
-                    'description' => $product->information,
-                    'amount' => $product->price,
-                    'currency' => 'jpy',
-                    'quantity' => $product->pivot->quantity,
-                ];
+                    'price_data' => [
+                        'unit_amount' => $product->price,
+                        'currency' => 'JPY',
+                    'product_data' => [
+                        'name' => $product->name,
+                        'description' => $product->information,
+                    ],
+            ],
+                'quantity' => $product->pivot->quantity,
+            ];
                 array_push($lineItems, $lineItem);
             }
         }
@@ -81,7 +85,7 @@ class CartController extends Controller
             ]);
         }
 
-        dd('test');
+        // dd('test');
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));//stripeの秘密鍵
         $session = \Stripe\Checkout\Session::create([
