@@ -29,4 +29,15 @@ class Common
         'older' => self::ORDER_OLDER,
     ];
 
+    // 商品の件数
+    const PAGINATION_LIST = [
+        '10' => 10,
+        '20' => 20,
+        '30' => 30,
+        '40' => 40,
+        '50' => 50,
+    ];
+
+
+
 }
