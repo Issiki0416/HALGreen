@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
+use App\Models\PrimaryCategory;
+
 
 
 class ItemController extends Controller
@@ -32,14 +34,20 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
+        // dd($request);
+
         $products = Product::availableItems()
+        ->selectCategory($request->category ?? '0')
         ->sortOrder($request->sort)
         ->paginate($request->pagination ?? 10);
+
+
+        $categories = PrimaryCategory::with('secondary')->get();
 
         // dd($stocks, $products);
         // $products = Product::all();
 
-        return view('user.index', compact('products'));
+        return view('user.index', compact('products', 'categories'));
     }
 
     public function show($id)
