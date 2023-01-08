@@ -34,7 +34,6 @@ class SendThanksMail implements ShouldQueue
     public function handle()
     {
         Mail::to('test@example.com')->send(new TestMail ());
-        SendThanksMail::dispatch();
 
     }
 }
