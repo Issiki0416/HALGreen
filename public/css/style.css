@@ -32,7 +32,7 @@ body {
     /* 背景色を黒にする */
     background: #fff;
     /* headerに余白を作る */
-    padding: 3px 15px;
+    padding: 3px 50px;
     /* アニメーションの変化時間 */
     transition: 0.5s;
 }
