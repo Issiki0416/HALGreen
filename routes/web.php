@@ -44,10 +44,6 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
 //     return view('user.dashboard');
 // })->middleware(['auth:users'])->name('dashboard');
 
-Route::get('/component-test1', [ComponentTestController::class, 'showComponent1']);
-Route::get('/component-test2', [ComponentTestController::class, 'showComponent2']);
-Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServiceContainerTest']);
-Route::get('/serviceprovidertest', [LifeCycleTestController::class, 'showServiceProviderTest']);
 
 
 require __DIR__.'/auth.php';

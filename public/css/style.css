@@ -1,0 +1,334 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.cdnfonts.com/css/century-gothic");
+body {
+    /* border-top: 8px solid #aed32d; */
+    font-family: "Century Gothic", "Noto Sans JP", "Roboto";
+}
+
+/*header 全ページ共通*/
+
+.img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.header {
+    /* headerを画面上部に固定する */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    /* ロゴとナビゲーションを横並びにする */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* スクロールしても他のコンテンツの下にならないようにする */
+    z-index: 50;
+    /* 背景色を黒にする */
+    background: #fff;
+    /* headerに余白を作る */
+    padding: 3px 15px;
+    /* アニメーションの変化時間 */
+    transition: 0.5s;
+}
+
+.headerList {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.headerItem {
+    margin-left: 20px;
+    color: #303030;
+}
+
+.headerItem:hover {
+    opacity: 0.7;
+    color: #aed32d;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.headerNav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.inq {
+    position: relative;
+    display: block;
+    width: 120px;
+    background-color: #fff;
+    color: #aed32d;
+    font-weight: 500;
+    border-radius: 50px;
+    text-align: center;
+    padding: 10px 0;
+    transition: 0.3s;
+    font-size: 12px;
+    border: solid 1px #aed32d;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.inq:hover {
+    background-color: #fff;
+    border: none;
+    background-color: #aed32d;
+}
+
+.login {
+    position: relative;
+    display: block;
+    width: 120px;
+    background-color: #fff;
+    color: #aed32d;
+    font-weight: 500;
+    border-radius: 50px;
+    text-align: center;
+    padding: 10px 0;
+    transition: 0.3s;
+    font-size: 12px;
+    border: 1px solid #aed32d;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.login:hover {
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: #aed32d;
+}
+
+/* .header {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  width: 242px;
+  margin: 31px 0 0 35px;
+}
+
+.gnav {
+  width: 258px;
+  margin: 40px 35px 0 0;
+}
+
+.gnav__ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.gnav__link {
+  font-size: 16px;
+  color: #545454;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.5s;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif';
+}
+
+.gnav__link:hover {
+  color: #aed32d;
+}
+
+.gnav__link--current-page {
+  color: #aed32d;
+} */
+
+/*HOME*/
+.mainvisual {
+    width: 50%;
+    height: 619px;
+}
+
+.bg-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+/* HOMEのメインコンテンツ */
+.main-home {
+    width: 65%;
+    max-width: 1200px;
+    margin: 46px auto 0 auto;
+    box-shadow: 0 0 20px #aaa;
+    padding: 62px 126px 92px 126px;
+}
+
+/* HOMEのh2 */
+.main-home__heading-title {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #44af3e;
+}
+
+/* HOMEのh3 */
+.main-home__heading-lead {
+    font-family: "ヒラギノ明朝 ProN", serif;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #444;
+    text-align: center;
+    margin: 67px 0 52px 0;
+}
+
+/* HOMEのp */
+.main-home__txt {
+    line-height: 200%;
+}
+
+/*下層ページ共通*/
+.main-second {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto 47px auto;
+}
+
+.main-second__h2 {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #44af3e;
+    margin: 64px 0 47px 0;
+}
+
+.main-second__h3 {
+    font-family: "ヒラギノ明朝 ProN", serif;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #444;
+    text-align: center;
+    margin: 59px 0 41px 0;
+}
+
+/*pickupページ*/
+.main-second__pickup-img {
+    width: 100%;
+    height: auto;
+}
+
+.main-second__txt {
+    line-height: 200%;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/*galleryページ*/
+.main-second__gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main-second__gallery-item {
+    padding: 10px;
+    width: 30%;
+}
+
+.main-second__gallery-img {
+    width: 100%;
+    height: auto;
+}
+
+.main-second__gallery-caption {
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+
+.fadein {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s;
+}
+
+.firstrow {
+    width: 30%;
+    margin: 0 0 169px 0;
+}
+
+/*footer 全ページ共通*/
+.footer {
+    width: 100%;
+    height: 145px;
+    text-align: center;
+    line-height: 145px;
+    font-size: 14px;
+    color: #888;
+}
+
+iframe {
+    width: 100%;
+}
+
+.bg-color {
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 0 auto 47px auto;
+    background-color: #efefef;
+}
+
+#gallary {
+    padding-top: 40px;
+}
+
+.main-img-wrap {
+    width: 37%;
+}
+
+.contents_wrap {
+    display: flex;
+    max-width: 1280px;
+    min-width: auto;
+    margin: 0 auto;
+    padding: 85px;
+}
+
+.content_title {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 44px;
+    text-align: center;
+}
+
+.list_wrap {
+    padding-left: 2%;
+    width: 61%;
+}
+
+.main-gallery-img {
+    width: 100%;
+    height: auto;
+    padding-top: 280px;
+}
