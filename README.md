@@ -26,6 +26,10 @@ DB起動後、下記コマンドを実行してください。
 ``` php artisan serve ```  
 と入力して簡易サーバーを起動してください。  
 
+## Laravelフロー
+<img width="881" alt="image" src="https://user-images.githubusercontent.com/96870513/203036307-8b5e7a82-38b0-4cf2-99f4-20bf2a16966a.png">
+
+
 ## 概要
 マルチログインに対応したECサイトです。
 
@@ -95,12 +99,10 @@ DB起動後、下記コマンドを実行してください。
 
     
     
-## Laravelフロー
-<img width="881" alt="image" src="https://user-images.githubusercontent.com/96870513/203036307-8b5e7a82-38b0-4cf2-99f4-20bf2a16966a.png">
 
 ## インストール後の設定
-画像のダミーデータはpublic/imagesフォルダ内にsample1.jpgからsample6.jpgまで用意しています。    
-``` php artisan storage:link ```でstorageフォルダにリンクを作成後、    
-storage/app/public/productsフォルダ内に保存すると表示されます。(productsフォルダがない場合は作成してください。)
+画像のダミーデータはpublic/imagesフォルダ内にsample1.jpgからsample6.jpgまで用意しています。     
+``` php artisan storage:link ```でstorageフォルダにリンクを作成後、   
+storage/app/public/productsフォルダ内に保存すると表示されます。(productsフォルダがない場合は作成してください。)   
 
-ショップの画像も表示する場合、storage/app/public/productsフォルダを作成して画像を保存してください。
+ショップの画像も表示する場合、storage/app/public/productsフォルダを作成して画像を保存してください。  
