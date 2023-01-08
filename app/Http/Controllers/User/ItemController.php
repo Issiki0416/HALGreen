@@ -54,7 +54,7 @@ class ItemController extends Controller
 
 
         // 非同期で送信
-        SendThanksMail::dispatch();
+        // SendThanksMail::dispatch();
 
         // dd($stocks, $products);
         // $products = Product::all();
