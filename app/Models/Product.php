@@ -91,4 +91,23 @@ class Product extends Model
         'image1.filename as filename');
     }
 
+    public function scopeSortOrder($query, $sortOrder)
+    {
+        if($sortOrder === null || $sortOrder === \Constant::SORT_ORDER_LIST['recommend']){
+            return $query->orderBy('sort_order', 'asc');
+        }
+        if($sortOrder === \Constant::SORT_ORDER_LIST['higherPrice']){
+            return $query->orderBy('price', 'desc');
+        }
+        if($sortOrder === \Constant::SORT_ORDER_LIST['lowerPrice']){
+            return $query->orderBy('price', 'asc');
+        }
+        if($sortOrder === \Constant::SORT_ORDER_LIST['later']){
+            return $query->orderBy('products.created_at', 'desc');
+        }
+        if($sortOrder === \Constant::SORT_ORDER_LIST['older']){
+            return $query->orderBy('products.created_at', 'asc');
+        }
+    }
+
 }
