@@ -8,6 +8,9 @@ use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
 use App\Models\PrimaryCategory;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+
 
 
 
@@ -44,6 +47,8 @@ class ItemController extends Controller
 
 
         $categories = PrimaryCategory::with('secondary')->get();
+
+        Mail::to('test@example.com')->send(new TestMail ());
 
         // dd($stocks, $products);
         // $products = Product::all();
