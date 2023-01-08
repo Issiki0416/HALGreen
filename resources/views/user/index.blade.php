@@ -7,7 +7,7 @@
             <div class="lg:flex lg:justify-around">
                 <div class="lg:flex items-center">
                     <select name="category" class="mb-2 lg:mb-0 lg:mr-3">
-                        <option value="0" @if (\Request::get('category') === 0)
+                        <option value="0" @if (\Request::get('category') === '0')
                             selected
                         @endif>すべて</option>
                         @foreach ($categories as $category)
