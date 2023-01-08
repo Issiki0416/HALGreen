@@ -27,7 +27,8 @@ DB起動後、下記コマンドを実行してください。
 と入力して簡易サーバーを起動してください。  
 
 ## Laravelフロー
-<img width="881" alt="image" src="https://user-images.githubusercontent.com/96870513/203036307-8b5e7a82-38b0-4cf2-99f4-20bf2a16966a.png">
+<img width="940" alt="image" src="https://user-images.githubusercontent.com/96870513/211212229-20f52c41-74b3-45be-96b2-6d89a6171a76.png">
+
 
 
 ## 概要
