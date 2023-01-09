@@ -55,19 +55,19 @@
                         <span class="text-sm">表示件数</span><br>
                         <select name="pagination" id="pagination">
                             <option value="{{ \Constant::PAGINATION_LIST['10'] }}"
-                                @if (\Request::get('pagination') === \Constant::PAGINATION_LIST['10']) selected @endif>10件
+                                @if (\Request::get('pagination') == \Constant::PAGINATION_LIST['10']) selected @endif>10件
                             </option>
                             <option value="{{ \Constant::PAGINATION_LIST['20'] }}"
-                                @if (\Request::get('pagination') === \Constant::PAGINATION_LIST['20']) selected @endif>20件
+                                @if (\Request::get('pagination') == \Constant::PAGINATION_LIST['20']) selected @endif>20件
                             </option>
                             <option value="{{ \Constant::PAGINATION_LIST['30'] }}"
-                                @if (\Request::get('pagination') === \Constant::PAGINATION_LIST['30']) selected @endif>30件
+                                @if (\Request::get('pagination') == \Constant::PAGINATION_LIST['30']) selected @endif>30件
                             </option>
                             <option value="{{ \Constant::PAGINATION_LIST['40'] }}"
-                                @if (\Request::get('pagination') === \Constant::PAGINATION_LIST['40']) selected @endif>40件
+                                @if (\Request::get('pagination') == \Constant::PAGINATION_LIST['40']) selected @endif>40件
                             </option>
                             <option value="{{ \Constant::PAGINATION_LIST['50'] }}"
-                                @if (\Request::get('pagination') === \Constant::PAGINATION_LIST['50']) selected @endif>50件
+                                @if (\Request::get('pagination') == \Constant::PAGINATION_LIST['50']) selected @endif>50件
                             </option>
                         </select>
                     </div>
