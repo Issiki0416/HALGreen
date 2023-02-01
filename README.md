@@ -3,7 +3,7 @@
 ## インストール方法
 1. ``` composer install ```  
 2. ``` npm install ```  
-３. ``` npm run dev ```  
+3. ``` npm run dev ```  
 
 .env.exampleをコピーして .envファイルを作成
 
